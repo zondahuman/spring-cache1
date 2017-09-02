@@ -12,4 +12,15 @@
     <artifactId>spring-cache1-service</artifactId>
 
 
+
+    <dependencies>
+        <dependency>
+            <artifactId>spring-cache1-dao</artifactId>
+            <groupId>com.abin.lee</groupId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+
+
 </project>
