@@ -22,7 +22,7 @@ public class DeleteByIdTest {
     private static final String httpURL = "http://localhost:7100/order/deleteById";
 
     @Test
-    public void testFindByIdT() {
+    public void testDeleteById() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();

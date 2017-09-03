@@ -22,7 +22,7 @@ public class CacheInsertTest {
     private static final String httpURL = "http://localhost:7100/order/insert";
 
     @Test
-    public void testBlackListVerify() {
+    public void testCacheInsert() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();

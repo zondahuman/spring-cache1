@@ -22,7 +22,7 @@ public class CacheUpdateTest {
     private static final String httpURL = "http://localhost:7100/order/update";
 
     @Test
-    public void testBlackListVerify() {
+    public void testCacheUpdate() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
