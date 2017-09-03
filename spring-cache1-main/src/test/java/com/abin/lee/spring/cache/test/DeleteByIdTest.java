@@ -19,7 +19,7 @@ import java.util.List;
  * this template use File | Settings | File Templates.
  */
 public class DeleteByIdTest {
-    private static final String httpURL = "http://localhost:7100/order/findById";
+    private static final String httpURL = "http://localhost:7100/order/deleteById";
 
     @Test
     public void testFindByIdT() {

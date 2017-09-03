@@ -39,14 +39,14 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     }
 
     @Override
-    @Cacheable(value="OrderInfo", key = "id")
+    @Cacheable(value="OrderInfo", key = "#id")
     public OrderInfo findById(Integer id) {
         OrderInfo orderInfo = this.orderInfoMapper.selectByPrimaryKey(id);
        return orderInfo;
     }
 
     @Override
-    @CacheEvict(value = "OrderInfo", key = "id") //移除指定key的数据
+    @CacheEvict(value = "OrderInfo", key = "#id") //移除指定key的数据
     public int deleteById(Integer id) {
         this.orderInfoMapper.deleteByPrimaryKey(id);
         return 0;
@@ -54,7 +54,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 
 
     @Override
-    @CachePut(value="OrderInfo", key = "#record.id")
+    @Cacheable(value="OrderInfo", key = "#record.id")
     public int update(OrderInfo record) {
         this.orderInfoMapper.updateByPrimaryKey(record);
         return 0;
