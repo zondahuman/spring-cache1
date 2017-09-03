@@ -4,6 +4,7 @@ import com.abin.lee.spring.cache.dao.OrderInfoMapper;
 import com.abin.lee.spring.cache.model.OrderInfo;
 import com.abin.lee.spring.cache.model.OrderInfoExample;
 import com.abin.lee.spring.cache.service.OrderInfoService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -34,6 +35,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 
 
     @Override
+    @Cacheable(value="findAll")
     public List<OrderInfo> findAll() {
         OrderInfoExample example = new OrderInfoExample();
         List<OrderInfo> list = this.orderInfoMapper.selectByExample(example);
@@ -41,6 +43,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     }
 
     @Override
+    @Cacheable(value="findById")
     public OrderInfo findById(Integer id) {
         OrderInfo orderInfo = this.orderInfoMapper.selectByPrimaryKey(id);
        return orderInfo;
