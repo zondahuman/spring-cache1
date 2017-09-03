@@ -88,4 +88,25 @@ public class OrderServiceController {
     }
 
 
+    @RequestMapping(value = "/update", method = {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
+    public String update(@RequestParam(value = "id") Integer id, @RequestParam(value = "age") Integer age, @RequestParam(value = "name") String name) {
+        String result = "FIAILURE";
+        try {
+            OrderInfo record = new OrderInfo();
+            record.setId(id);
+            record.setName(name);
+            record.setAge(age);
+            record.setCreateTime(new Date());
+            record.setUpdateTime(new Date());
+            record.setVersion(0);
+            this.orderInfoService.update(record);
+            result = "SUCCESS";
+        } catch (Exception e) {
+            logger.error("e={}", e);
+            result = "FIAILURE";
+        }
+        return result;
+    }
+
 }

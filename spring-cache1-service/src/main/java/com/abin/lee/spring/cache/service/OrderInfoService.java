@@ -19,5 +19,5 @@ public interface OrderInfoService {
 
     int deleteById(Integer id);
 
-
+    int update(OrderInfo record);
 }
