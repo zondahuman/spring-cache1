@@ -33,30 +33,30 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>false</filtering>
-                <excludes>
-                    <exclude>filters/*.*</exclude>
-                    <exclude>properties/*.*</exclude>
-                    <exclude>logback.xml</exclude>
-                </excludes>
-                <includes>
-                    <include>**/*.*</include>
-                </includes>
+                <!--<excludes>-->
+                    <!--<exclude>filters/*.*</exclude>-->
+                    <!--<exclude>properties/*.*</exclude>-->
+                    <!--<exclude>logback.xml</exclude>-->
+                <!--</excludes>-->
+                <!--<includes>-->
+                    <!--<include>**/*.*</include>-->
+                <!--</includes>-->
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
-                <excludes>
-                    <exclude>filters/*.*</exclude>
-                </excludes>
-                <includes>
-                    <include>properties/*.*</include>
-                    <include>logback.xml</include>
-                </includes>
+                <!--<excludes>-->
+                    <!--<exclude>filters/*.*</exclude>-->
+                <!--</excludes>-->
+                <!--<includes>-->
+                    <!--<include>properties/*.*</include>-->
+                    <!--<include>logback.xml</include>-->
+                <!--</includes>-->
             </resource>
         </resources>
-        <filters>
-            <filter>src/main/profiles/${env}/common.properties</filter>
-        </filters>
+        <!--<filters>-->
+            <!--<filter>src/main/profiles/${env}/common.properties</filter>-->
+        <!--</filters>-->
 
         <plugins>
 

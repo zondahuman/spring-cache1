@@ -76,17 +76,10 @@
 		<property name="order" value="1"></property>
 	</bean>
 
-
-
-
-
-
-
 	<!--对静态资源文件的访问-->
 	<mvc:default-servlet-handler />
 
 	<aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
-
 
 	<!-- @RequestMapping -->
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">

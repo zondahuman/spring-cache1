@@ -21,10 +21,6 @@
     <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
 
 
-
-
-
-
     <import resource="spring-service.xml" />
     <import resource="spring-web.xml" />
 
