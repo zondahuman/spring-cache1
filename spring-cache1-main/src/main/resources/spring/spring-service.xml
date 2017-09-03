@@ -21,7 +21,7 @@
                     <property name="name" value="default"/>
                 </bean>
                 <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
-                    <property name="name" value="findById"/>
+                    <property name="name" value="OrderInfo"/>
                 </bean>
             </set>
         </property>
