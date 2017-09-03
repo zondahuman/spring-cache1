@@ -24,77 +24,56 @@
 
 
 
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <env>local</env>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>beta</id>
+            <properties>
+                <env>beta</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <env>prod</env>
+            </properties>
+        </profile>
+    </profiles>
+
+
+
     <build>
+        <finalName>spring-cache1</finalName>
+
+        <!--<filters>-->
+        <!--<filter>${basedir}/src/main/profiles/${env}/${env}.properties</filter>-->
+        <!--<filter>${basedir}/src/main/profiles/${env}/*.xml</filter>-->
+        <!--</filters>-->
         <resources>
             <resource>
-                <directory>src/main/java</directory>
-            </resource>
-
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-                <!--<excludes>-->
-                    <!--<exclude>filters/*.*</exclude>-->
-                    <!--<exclude>properties/*.*</exclude>-->
-                    <!--<exclude>logback.xml</exclude>-->
-                <!--</excludes>-->
-                <!--<includes>-->
-                    <!--<include>**/*.*</include>-->
-                <!--</includes>-->
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
+                <directory>${basedir}/src/main/resources</directory>
                 <filtering>true</filtering>
-                <!--<excludes>-->
-                    <!--<exclude>filters/*.*</exclude>-->
-                <!--</excludes>-->
-                <!--<includes>-->
-                    <!--<include>properties/*.*</include>-->
-                    <!--<include>logback.xml</include>-->
-                <!--</includes>-->
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/profiles/${env}</directory>
+                <filtering>true</filtering>
             </resource>
         </resources>
-        <!--<filters>-->
-            <!--<filter>src/main/profiles/${env}/common.properties</filter>-->
-        <!--</filters>-->
 
-        <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <warName>message</warName>
-                    <webResources>
-                        <resource>
-                            <directory>src/main/webapp</directory>
-                            <includes>
-                                <include>*.*</include>
-                                <include>**/*.*</include>
-                            </includes>
-                            <filtering>false</filtering>
-                        </resource>
-                    </webResources>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <systemProperties>
-                        <property>
-                            <name>log4j.configuration</name>
-                            <value>log4j.properties</value>
-                        </property>
-                    </systemProperties>
-                    <testFailureIgnore>true</testFailureIgnore>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-
-        </plugins>
 
     </build>
 

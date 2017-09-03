@@ -11,12 +11,12 @@ import java.util.List;
  */
 public interface OrderInfoService {
 
-    int insert(Integer age, String name);
+    int insert(OrderInfo record);
 
     List<OrderInfo> findAll();
 
     OrderInfo findById(Integer id);
 
-
+    int delete(Integer id);
 
 }

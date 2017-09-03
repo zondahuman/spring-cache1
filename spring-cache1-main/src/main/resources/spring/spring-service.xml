@@ -21,7 +21,7 @@
                     <property name="name" value="default"/>
                 </bean>
                 <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
-                    <property name="name" value="accountCache"/>
+                    <property name="name" value="findById"/>
                 </bean>
             </set>
         </property>

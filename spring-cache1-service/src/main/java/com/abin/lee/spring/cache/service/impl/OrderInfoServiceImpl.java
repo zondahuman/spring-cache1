@@ -4,6 +4,8 @@ import com.abin.lee.spring.cache.dao.OrderInfoMapper;
 import com.abin.lee.spring.cache.model.OrderInfo;
 import com.abin.lee.spring.cache.model.OrderInfoExample;
 import com.abin.lee.spring.cache.service.OrderInfoService;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -23,13 +25,8 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     OrderInfoMapper orderInfoMapper;
 
     @Override
-    public int insert(Integer age, String name) {
-        OrderInfo record = new OrderInfo();
-        record.setName(name);
-        record.setAge(age);
-        record.setCreateTime(new Date());
-        record.setUpdateTime(new Date());
-        record.setVersion(0);
+    @CachePut(value="OrderInfo", key = "#record.id")
+    public int insert(OrderInfo record) {
         return this.orderInfoMapper.insert(record);
     }
 
@@ -43,13 +40,16 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     }
 
     @Override
-    @Cacheable(value="findById")
+    @Cacheable(value="OrderInfo", key = "#id")
     public OrderInfo findById(Integer id) {
         OrderInfo orderInfo = this.orderInfoMapper.selectByPrimaryKey(id);
        return orderInfo;
     }
 
-
-
-
+    @Override
+    @CacheEvict(value = "OrderInfo", key = "#id") //移除指定key的数据
+    public int delete(Integer id) {
+        this.orderInfoMapper.deleteByPrimaryKey(id);
+        return 0;
+    }
 }

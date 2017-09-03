@@ -25,6 +25,13 @@
     </properties>
 
     <dependencies>
+        <!-- mysql begin -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.32</version>
+        </dependency>
+        <!-- mysql end -->
         <!-- servlet begin -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -352,35 +359,6 @@
 
 
 
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <env>dev</env>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
-            <id>local</id>
-            <properties>
-                <env>local</env>
-            </properties>
-        </profile>
-        <profile>
-            <id>prd</id>
-            <properties>
-                <env>prd</env>
-            </properties>
-        </profile>
-        <profile>
-            <id>test</id>
-            <properties>
-                <env>test</env>
-            </properties>
-        </profile>
-    </profiles>
 
 
 

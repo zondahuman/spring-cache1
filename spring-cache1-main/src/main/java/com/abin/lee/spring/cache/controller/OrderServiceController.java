@@ -1,5 +1,6 @@
 package com.abin.lee.spring.cache.controller;
 
+import com.abin.lee.spring.cache.common.util.JsonUtil;
 import com.abin.lee.spring.cache.model.OrderInfo;
 import com.abin.lee.spring.cache.service.OrderInfoService;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,7 +34,13 @@ public class OrderServiceController {
     public String insert(@RequestParam(value = "age") Integer age, @RequestParam(value = "name") String name) {
         String result = "FIAILURE";
         try {
-            this.orderInfoService.insert(age, name);
+            OrderInfo record = new OrderInfo();
+            record.setName(name);
+            record.setAge(age);
+            record.setCreateTime(new Date());
+            record.setUpdateTime(new Date());
+            record.setVersion(0);
+            this.orderInfoService.insert(record);
             result = "SUCCESS";
         } catch (Exception e) {
             logger.error("e={}", e);
@@ -43,14 +51,14 @@ public class OrderServiceController {
 
     @RequestMapping(value = "/findById", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public OrderInfo findById(@RequestParam(value = "id") Integer id) {
+    public String findById(@RequestParam(value = "id") Integer id) {
         OrderInfo orderInfo = null;
         try {
             orderInfo = this.orderInfoService.findById(id);
         } catch (Exception e) {
             logger.error("e={}", e);
         }
-        return orderInfo;
+        return JsonUtil.toJson(orderInfo);
     }
 
     @RequestMapping(value = "/findAll", method = {RequestMethod.GET, RequestMethod.POST})
