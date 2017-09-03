@@ -22,24 +22,11 @@
 
 
 
-    <cache:annotation-driven/>
-
-    <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
-        <property name="caches">
-            <set>
-                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
-                    <property name="name" value="default"/>
-                </bean>
-                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
-                    <property name="name" value="accountCache"/>
-                </bean>
-            </set>
-        </property>
-    </bean>
 
 
 
-    <import resource="spring-zookeeper.xml" />
+    <import resource="spring-service.xml" />
+    <import resource="spring-web.xml" />
 
 
 

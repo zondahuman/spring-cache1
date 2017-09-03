@@ -10,12 +10,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-cache1-dao</artifactId>
-
+    <packaging>jar</packaging>
 
 
     <dependencies>
         <dependency>
             <artifactId>spring-cache1-common</artifactId>
+            <groupId>com.abin.lee</groupId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <artifactId>spring-cache1-model</artifactId>
             <groupId>com.abin.lee</groupId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
