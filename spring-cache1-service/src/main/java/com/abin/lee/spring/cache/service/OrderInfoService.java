@@ -17,6 +17,7 @@ public interface OrderInfoService {
 
     OrderInfo findById(Integer id);
 
-    int delete(Integer id);
+    int deleteById(Integer id);
+
 
 }

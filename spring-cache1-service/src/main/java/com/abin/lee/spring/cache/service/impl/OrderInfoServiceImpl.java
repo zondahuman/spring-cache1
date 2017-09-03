@@ -48,7 +48,7 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 
     @Override
     @CacheEvict(value = "OrderInfo", key = "#id") //移除指定key的数据
-    public int delete(Integer id) {
+    public int deleteById(Integer id) {
         this.orderInfoMapper.deleteByPrimaryKey(id);
         return 0;
     }

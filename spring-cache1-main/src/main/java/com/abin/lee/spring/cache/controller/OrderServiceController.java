@@ -73,7 +73,19 @@ public class OrderServiceController {
         return list;
     }
 
-
+    @RequestMapping(value = "/deleteById", method = {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
+    public String deleteById(@RequestParam(value = "id") Integer id) {
+        String result = "FIAILURE";
+        try {
+            this.orderInfoService.deleteById(id);
+            result = "SUCCESS";
+        } catch (Exception e) {
+            logger.error("e={}", e);
+            result = "FIAILURE";
+        }
+        return result;
+    }
 
 
 }
