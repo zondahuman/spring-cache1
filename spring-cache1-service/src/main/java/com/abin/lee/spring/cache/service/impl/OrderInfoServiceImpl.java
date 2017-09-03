@@ -7,6 +7,7 @@ import com.abin.lee.spring.cache.service.OrderInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,7 +24,11 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     @Override
     public int insert(Integer age, String name) {
         OrderInfo record = new OrderInfo();
-
+        record.setName(name);
+        record.setAge(age);
+        record.setCreateTime(new Date());
+        record.setUpdateTime(new Date());
+        record.setVersion(0);
         return this.orderInfoMapper.insert(record);
     }
 
