@@ -23,6 +23,7 @@
 
     <import resource="spring-service.xml" />
     <import resource="spring-web.xml" />
+    <import resource="spring-cache.xml" />
 
 
 

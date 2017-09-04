@@ -11,21 +11,21 @@
 
 
 
+    <!--<context:component-scan base-package="com.abin.lee.spring.cache.common.cache"/>-->
+    <!--<cache:annotation-driven cache-manager="cacheManager"/>-->
 
-    <cache:annotation-driven/>
-
-    <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
-        <property name="caches">
-            <set>
-                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
-                    <property name="name" value="default"/>
-                </bean>
-                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
-                    <property name="name" value="OrderInfo"/>
-                </bean>
-            </set>
-        </property>
-    </bean>
+    <!--<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">-->
+        <!--<property name="caches">-->
+            <!--<set>-->
+                <!--<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">-->
+                    <!--<property name="name" value="default"/>-->
+                <!--</bean>-->
+                <!--<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">-->
+                    <!--<property name="name" value="OrderInfo"/>-->
+                <!--</bean>-->
+            <!--</set>-->
+        <!--</property>-->
+    <!--</bean>-->
 
     <!-- mysql数据源 -->
     <bean id="dataSource"
