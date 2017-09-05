@@ -1,10 +1,13 @@
 package com.abin.lee.spring.cache.service.impl;
 
+import com.abin.lee.spring.cache.common.util.JsonUtil;
 import com.abin.lee.spring.cache.dao.OrderInfoMapper;
 import com.abin.lee.spring.cache.model.OrderInfo;
 import com.abin.lee.spring.cache.model.OrderInfoExample;
 import com.abin.lee.spring.cache.service.OrderInfoService;
 import com.google.common.primitives.Ints;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -21,14 +24,18 @@ import java.util.List;
  */
 @Service
 public class OrderInfoServiceImpl implements OrderInfoService {
+    protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     @Resource
     OrderInfoMapper orderInfoMapper;
 
     @Override
-//    @Cacheable(value="OrderInfo", key = "#record.id")
-    public int insert(OrderInfo record) {
-        return this.orderInfoMapper.insert(record);
+//    @CachePut(value="OrderInfo", key = "#id")
+    @CachePut(value="OrderInfo", key = "#record.id")
+    public OrderInfo insert(OrderInfo record) {
+        this.orderInfoMapper.insert(record);
+        LOGGER.info("record= " + JsonUtil.toJson(record));
+        return record;
     }
 
 
@@ -41,24 +48,24 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     }
 
     @Override
-    @Cacheable(value="OrderInfo", key = "#id.toString()")
-    public OrderInfo findById(Integer id) {
+    @Cacheable(value="OrderInfo", key = "#id")
+    public OrderInfo findById(final Integer id) {
         OrderInfo orderInfo = this.orderInfoMapper.selectByPrimaryKey(id);
        return orderInfo;
     }
 
     @Override
-    @CacheEvict(value = "OrderInfo", key = "#id.toString()") //移除指定key的数据
-    public int deleteById(Integer id) {
+    @CacheEvict(value = "OrderInfo", key = "#id") //移除指定key的数据
+    public OrderInfo deleteById(final Integer id) {
         this.orderInfoMapper.deleteByPrimaryKey(id);
-        return 0;
+        return null;
     }
 
 
     @Override
-    @CachePut(value="OrderInfo", key = "#record.id.toString()")
-    public int update(OrderInfo record) {
+    @CachePut(value="OrderInfo", key = "#record.id")
+    public OrderInfo update(OrderInfo record) {
         this.orderInfoMapper.updateByPrimaryKey(record);
-        return 0;
+        return record;
     }
 }

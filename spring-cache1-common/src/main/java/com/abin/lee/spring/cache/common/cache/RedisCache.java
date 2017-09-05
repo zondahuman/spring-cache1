@@ -45,7 +45,8 @@ public class RedisCache implements Cache {
     @Override
     public ValueWrapper get(Object key) {
         // TODO Auto-generated method stub
-        final String keyf = (String) key;
+//        final String keyf = (String) key;
+        final String keyf = key.toString();
         Object object = null;
         object = redisTemplate.execute(new RedisCallback<Object>() {
             public Object doInRedis(RedisConnection connection)
@@ -76,7 +77,8 @@ public class RedisCache implements Cache {
     @Override
     public void put(Object key, Object value) {
         // TODO Auto-generated method stub
-        final String keyf = (String) key;
+//        final String keyf = (String) key;
+        final String keyf = key.toString();
         final Object valuef = value;
         final long liveTime = 86400;
 
@@ -152,7 +154,8 @@ public class RedisCache implements Cache {
     @Override
     public void evict(Object key) {
         // TODO Auto-generated method stub
-        final String keyf = (String) key;
+//        final String keyf = (String) key;
+        final String keyf = key.toString();
         redisTemplate.execute(new RedisCallback<Long>() {
             public Long doInRedis(RedisConnection connection)
                     throws DataAccessException {

@@ -24,7 +24,7 @@ import java.util.List;
 @RequestMapping("/order")
 public class OrderServiceController {
 
-    protected final static Logger logger = LoggerFactory.getLogger(OrderServiceController.class);
+    protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     @Resource
     OrderInfoService orderInfoService;
@@ -43,7 +43,7 @@ public class OrderServiceController {
             this.orderInfoService.insert(record);
             result = "SUCCESS";
         } catch (Exception e) {
-            logger.error("e={}", e);
+            LOGGER.error("e={}", e);
             result = "FAILURE";
         }
         return result;
@@ -56,7 +56,7 @@ public class OrderServiceController {
         try {
             orderInfo = this.orderInfoService.findById(id);
         } catch (Exception e) {
-            logger.error("e={}", e);
+            LOGGER.error("e={}", e);
         }
         return orderInfo;
     }
@@ -68,7 +68,7 @@ public class OrderServiceController {
         try {
             list = this.orderInfoService.findAll();
         } catch (Exception e) {
-            logger.error("e={}", e);
+            LOGGER.error("e={}", e);
         }
         return list;
     }
@@ -81,7 +81,7 @@ public class OrderServiceController {
             this.orderInfoService.deleteById(id);
             result = "SUCCESS";
         } catch (Exception e) {
-            logger.error("e={}", e);
+            LOGGER.error("e={}", e);
             result = "FAILURE";
         }
         return result;
@@ -104,7 +104,7 @@ public class OrderServiceController {
             this.orderInfoService.update(record);
             result = "SUCCESS";
         } catch (Exception e) {
-            logger.error("e={}", e);
+            LOGGER.error("e={}", e);
             result = "FAILURE";
         }
         return result;

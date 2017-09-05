@@ -12,7 +12,7 @@
 
 
     <context:component-scan base-package="com.abin.lee.spring.cache.common.cache"/>
-    <cache:annotation-driven cache-manager="cacheManager"/>
+    <cache:annotation-driven cache-manager="cacheManager" proxy-target-class="true"/>
 
     <!--<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">-->
         <!--<property name="caches">-->

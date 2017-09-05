@@ -27,9 +27,9 @@ public class CacheUpdateTest {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-            nvps.add(new BasicNameValuePair("id", "90"));
+            nvps.add(new BasicNameValuePair("id", "100"));
             nvps.add(new BasicNameValuePair("name", "lee1"));
-            nvps.add(new BasicNameValuePair("age", "301"));
+            nvps.add(new BasicNameValuePair("age", "302"));
             HttpPost httpPost = new HttpPost(httpURL);
 
             httpPost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
