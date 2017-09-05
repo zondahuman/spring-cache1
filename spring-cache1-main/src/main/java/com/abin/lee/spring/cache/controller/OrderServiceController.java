@@ -32,7 +32,7 @@ public class OrderServiceController {
     @RequestMapping(value = "/insert", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String insert(@RequestParam(value = "age") Integer age, @RequestParam(value = "name") String name) {
-        String result = "FIAILURE";
+        String result = "FAILURE";
         try {
             OrderInfo record = new OrderInfo();
             record.setName(name);
@@ -44,14 +44,14 @@ public class OrderServiceController {
             result = "SUCCESS";
         } catch (Exception e) {
             logger.error("e={}", e);
-            result = "FIAILURE";
+            result = "FAILURE";
         }
         return result;
     }
 
     @RequestMapping(value = "/findById", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public OrderInfo findById(@RequestParam(value = "id") String id) {
+    public OrderInfo findById(@RequestParam(value = "id") Integer id) {
         OrderInfo orderInfo = null;
         try {
             orderInfo = this.orderInfoService.findById(id);
@@ -75,14 +75,14 @@ public class OrderServiceController {
 
     @RequestMapping(value = "/deleteById", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public String deleteById(@RequestParam(value = "id") String id) {
-        String result = "FIAILURE";
+    public String deleteById(@RequestParam(value = "id") Integer id) {
+        String result = "FAILURE";
         try {
             this.orderInfoService.deleteById(id);
             result = "SUCCESS";
         } catch (Exception e) {
             logger.error("e={}", e);
-            result = "FIAILURE";
+            result = "FAILURE";
         }
         return result;
     }
@@ -91,7 +91,8 @@ public class OrderServiceController {
     @RequestMapping(value = "/update", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String update(@RequestParam(value = "id") Integer id, @RequestParam(value = "age") Integer age, @RequestParam(value = "name") String name) {
-        String result = "FIAILURE";
+        String result = "FAILURE";
+        Integer result1 = 1;
         try {
             OrderInfo record = new OrderInfo();
             record.setId(id);
@@ -104,7 +105,7 @@ public class OrderServiceController {
             result = "SUCCESS";
         } catch (Exception e) {
             logger.error("e={}", e);
-            result = "FIAILURE";
+            result = "FAILURE";
         }
         return result;
     }

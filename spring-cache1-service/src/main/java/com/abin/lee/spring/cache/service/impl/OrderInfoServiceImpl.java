@@ -26,13 +26,14 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     OrderInfoMapper orderInfoMapper;
 
     @Override
+//    @Cacheable(value="OrderInfo", key = "#record.id")
     public int insert(OrderInfo record) {
         return this.orderInfoMapper.insert(record);
     }
 
 
     @Override
-    @Cacheable(value="findAll")
+    @Cacheable(value="OrderInfoList")
     public List<OrderInfo> findAll() {
         OrderInfoExample example = new OrderInfoExample();
         List<OrderInfo> list = this.orderInfoMapper.selectByExample(example);
@@ -40,22 +41,22 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     }
 
     @Override
-    @Cacheable(value="OrderInfo", key = "#id")
-    public OrderInfo findById(String id) {
-        OrderInfo orderInfo = this.orderInfoMapper.selectByPrimaryKey(Ints.tryParse(id));
+    @Cacheable(value="OrderInfo", key = "#id.toString()")
+    public OrderInfo findById(Integer id) {
+        OrderInfo orderInfo = this.orderInfoMapper.selectByPrimaryKey(id);
        return orderInfo;
     }
 
     @Override
-    @CacheEvict(value = "OrderInfo", key = "#id") //移除指定key的数据
-    public int deleteById(String id) {
-        this.orderInfoMapper.deleteByPrimaryKey(Ints.tryParse(id));
+    @CacheEvict(value = "OrderInfo", key = "#id.toString()") //移除指定key的数据
+    public int deleteById(Integer id) {
+        this.orderInfoMapper.deleteByPrimaryKey(id);
         return 0;
     }
 
 
     @Override
-    @Cacheable(value="OrderInfo", key = "#record.id")
+    @CachePut(value="OrderInfo", key = "#record.id.toString()")
     public int update(OrderInfo record) {
         this.orderInfoMapper.updateByPrimaryKey(record);
         return 0;

@@ -15,9 +15,9 @@ public interface OrderInfoService {
 
     List<OrderInfo> findAll();
 
-    OrderInfo findById(String id);
+    OrderInfo findById(Integer id);
 
-    int deleteById(String id) ;
+    int deleteById(Integer id) ;
 
     int update(OrderInfo record);
 }
