@@ -1,8 +1,10 @@
 package com.abin.lee.spring.cache.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OrderInfo {
+public class OrderInfo implements Serializable{
+
     private Integer id;
 
     private String name;

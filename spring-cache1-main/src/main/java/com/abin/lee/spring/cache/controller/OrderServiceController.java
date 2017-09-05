@@ -51,14 +51,14 @@ public class OrderServiceController {
 
     @RequestMapping(value = "/findById", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public String findById(@RequestParam(value = "id") String id) {
+    public OrderInfo findById(@RequestParam(value = "id") String id) {
         OrderInfo orderInfo = null;
         try {
             orderInfo = this.orderInfoService.findById(id);
         } catch (Exception e) {
             logger.error("e={}", e);
         }
-        return JsonUtil.toJson(orderInfo);
+        return orderInfo;
     }
 
     @RequestMapping(value = "/findAll", method = {RequestMethod.GET, RequestMethod.POST})
