@@ -51,7 +51,7 @@ public class OrderServiceController {
 
     @RequestMapping(value = "/findById", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public String findById(@RequestParam(value = "id") Integer id) {
+    public String findById(@RequestParam(value = "id") String id) {
         OrderInfo orderInfo = null;
         try {
             orderInfo = this.orderInfoService.findById(id);
@@ -75,7 +75,7 @@ public class OrderServiceController {
 
     @RequestMapping(value = "/deleteById", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public String deleteById(@RequestParam(value = "id") Integer id) {
+    public String deleteById(@RequestParam(value = "id") String id) {
         String result = "FIAILURE";
         try {
             this.orderInfoService.deleteById(id);

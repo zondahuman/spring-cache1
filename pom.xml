@@ -105,11 +105,11 @@
         </dependency>
         <!-- Mybatis end -->
 
-        <dependency>
-            <groupId>commons-pool</groupId>
-            <artifactId>commons-pool</artifactId>
-            <version>1.6</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>commons-pool</groupId>-->
+            <!--<artifactId>commons-pool</artifactId>-->
+            <!--<version>1.6</version>-->
+        <!--</dependency>-->
 
 
         <dependency>
@@ -144,11 +144,6 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.4</version>
-        </dependency>
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.2.1</version>
         </dependency>
         <dependency>
             <groupId>commons-lang</groupId>

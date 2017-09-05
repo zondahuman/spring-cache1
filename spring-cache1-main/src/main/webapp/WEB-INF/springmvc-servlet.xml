@@ -47,8 +47,9 @@
 
 
 	<!-- 定义注解驱动Controller方法处理适配器 -->
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+	<!--<bean-->
+		<!--class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />-->
+	<bean	class=" org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
 
 
 	<bean id="localeResolver"
@@ -70,8 +71,10 @@
 
 
 	<!-- 定义注解URL映射处理器 -->
+	<!--<bean id="urlMapping"-->
+		<!--class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">-->
 	<bean id="urlMapping"
-		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
 		<property name="interceptors" ref="interceptors" />
 		<property name="order" value="1"></property>
 	</bean>

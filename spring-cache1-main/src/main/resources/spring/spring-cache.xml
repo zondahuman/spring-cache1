@@ -14,18 +14,18 @@
     <context:component-scan base-package="com.abin.lee.spring.cache.common.cache"/>
     <cache:annotation-driven cache-manager="cacheManager"/>
 
-    <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
-        <property name="caches">
-            <set>
-                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
-                    <property name="name" value="default"/>
-                </bean>
-                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
-                    <property name="name" value="OrderInfo"/>
-                </bean>
-            </set>
-        </property>
-    </bean>
+    <!--<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">-->
+        <!--<property name="caches">-->
+            <!--<set>-->
+                <!--<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">-->
+                    <!--<property name="name" value="default"/>-->
+                <!--</bean>-->
+                <!--<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">-->
+                    <!--<property name="name" value="OrderInfo"/>-->
+                <!--</bean>-->
+            <!--</set>-->
+        <!--</property>-->
+    <!--</bean>-->
 
     <!-- spring自己的换管理器，这里定义了两个缓存位置名称 ，既注解中的value -->
     <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
@@ -37,7 +37,7 @@
                 </bean>
                 <bean class="com.abin.lee.spring.cache.common.cache.RedisCache">
                     <property name="redisTemplate" ref="redisTemplate" />
-                    <property name="name" value="commonCache"/>
+                    <property name="name" value="OrderInfo"/>
                 </bean>
             </set>
         </property>
@@ -45,16 +45,23 @@
 
     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxIdle" value="${redis.maxIdle}" />
-        <property name="maxActive" value="${redis.maxActive}" />
-        <property name="maxWait" value="${redis.maxWait}" />
+        <property name="minIdle" value="${redis.minIdle}" />
+        <property name="maxTotal" value="${redis.maxTotal}" />
         <property name="testOnBorrow" value="${redis.testOnBorrow}" />
     </bean>
 
-    <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-          p:hostName="${redis.host}" p:port="${redis.port}" p:password="${redis.pass}" p:poolConfig-ref="poolConfig"/>
+    <bean id="connectionFactory"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="poolConfig" ref="poolConfig" />
+        <property name="port" value="${redis.port}" />
+        <property name="hostName" value="${redis.host}" />
+        <!--<property name="password" value="${redis.pass}" />-->
+        <property name="timeout" value="${redis.timeout}" />
+    </bean>
 
-    <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
-        <property name="connectionFactory"   ref="connectionFactory" />
+
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="connectionFactory" />
     </bean>
 
 

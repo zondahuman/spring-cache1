@@ -19,14 +19,15 @@ import java.util.List;
  * this template use File | Settings | File Templates.
  */
 public class FindByIdTest {
-    private static final String httpURL = "http://localhost:7100/order/findById";
+//    private static final String httpURL = "http://localhost:7100/order/findById";
+    private static final String httpURL = "http://localhost:8100/order/findById";
 
     @Test
     public void testFindByIdT() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-            nvps.add(new BasicNameValuePair("id", "86"));
+            nvps.add(new BasicNameValuePair("id", "87"));
 
             HttpPost httpPost = new HttpPost(httpURL);
 
